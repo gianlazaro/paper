@@ -1,20 +1,7 @@
 import { Head } from "$fresh/runtime.ts";
+import { RouteContext } from "$fresh/server.ts";
 
-export const handler = {
-  async GET(_, ctx) {
-    const resp = await fetch(`https://api.github.com/users/gianlazaro`);
-    if (resp.status === 404) {
-      return ctx.render(null);
-    }
-    const user = await resp.json();
-    return ctx.render(user);
-  },
-};
-
-export default async function Home({ data }) {
-  if (!data) {
-    return <h1>User not found</h1>;
-  }
+export default function Home() {
   return (
     <>
       <Head>
@@ -22,7 +9,7 @@ export default async function Home({ data }) {
       </Head>
       <div class="px-4 py-8 mx-auto  border-b-1">
         <div class="container mx-auto">
-          <h1 class="text-xl">Paper Church {data.name}</h1>
+          <h1 class="text-xl">Paper Church</h1>
         </div>
       </div>
       <div class="container mx-auto h-96 flex items-center">
