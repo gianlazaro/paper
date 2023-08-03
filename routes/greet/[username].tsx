@@ -14,5 +14,9 @@ export default function Greet({ data }: PageProps) {
     return <h1>No data</h1>;
   }
 
-  return <div>{JSON.stringify(data)}</div>;
+  return (
+    <div>
+      <img src={data.avatar_url} />
+    </div>
+  );
 }
